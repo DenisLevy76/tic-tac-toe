@@ -6,4 +6,4 @@ This game was built to make an integration between our Youtube Channel and the s
 Feel free to contribute with improvements and features. Your PRs will be evaluated. 
 
 Cheers!  
-Gabriel & Vanessa
+Gabriel & Vanessa.
