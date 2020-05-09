@@ -28,13 +28,17 @@ const tic_tac_toe = {
         this.container_element = container;
     },
 
+    showRoundDisplay(){
+        document.getElementById('playerTurn').innerHTML = this.symbols.options[this.symbols.turn_index]
+    },
+
     make_play(position) {
         if (this.gameover || this.board[position] !== '') return false;
-
+        
         const currentSymbol = this.symbols.options[this.symbols.turn_index];
         this.board[position] = currentSymbol;
         this.draw();
-
+        
         const winning_sequences_index = this.check_winning_sequences(currentSymbol);
         if (this.is_game_over()){
             this.game_is_over();
@@ -44,8 +48,8 @@ const tic_tac_toe = {
             this.stylize_winner_sequence(this.winning_sequences[winning_sequences_index]);
         } else {
             this.symbols.change();
+            this.showRoundDisplay();
         }
-
         return true;
     },
 
@@ -83,7 +87,7 @@ const tic_tac_toe = {
     start() {
         this.board.fill('');
         this.draw();
-        this.gameover = false;       
+        this.gameover = false;
     },
 
     restart() {
@@ -97,6 +101,7 @@ const tic_tac_toe = {
     },
 
     draw() {
+        this.showRoundDisplay();
         this.container_element.innerHTML = this.board.map((element, index) => `<div onclick="tic_tac_toe.make_play('${index}')"> ${element} </div>`).reduce((content, current) => content + current);
     },
 };
